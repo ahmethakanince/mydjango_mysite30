@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} login page {% endblock%}
+
+{%block body_content%}
+
+<div  class="container mt-3">
+    <div class="col">
+        <h1> Login </h1>
+        <hr>
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %} <!--- bunu formlara eklemek kesinlikle gerek güvenlik acısından eklemezsek hata verir. -->
+
+            {% if messages %}
+                <ul class="messages">
+                 {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+                     </ul>
+                    {% endif %}
+
+            <div class="mb-3"> 
+                <label for="username" class="form-label" ><strong>Username</strong></label>
+                <input type="text" name="username" class="form-control" placeholder="Username or Email ">
+            </div>
+
+            <div class="mb-3"> 
+                <label for="password" class="form-label"><strong>Password</strong></label>
+                <input type="password" name="password" class="form-control">
+            </div>
+
+            <input type="submit" value="login" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

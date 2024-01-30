@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{%block body_content%}
+{% include 'background.html'%}
+
+{% if messages %}
+<div class="alert alert-primary" role="alert">
+<ul class="messages">
+        {% for message in messages %}
+<li {% if message.tags %} class="{{ message.tags }}"{% endif %}> <strong>{{ message }}</strong> </li>
+        {% endfor %}
+</ul>
+{% endif %}
+</div>
+
+<form action="{% url 'rulesofexam' %}" method="GET">
+    {% csrf_token %}
+<div class="container site-content">
+    <h1 class="text-white">TEST YOURSELF</h1>
+    <br>
+    <button type="submit" class="btn btn-primary btn-lg" action=>GET START</button>
+</div>
+
+</form>
+{% endblock %}

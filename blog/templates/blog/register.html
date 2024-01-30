@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} register page {% endblock%}
+{%block body_content%}
+<div class="container">
+   <h2 class="text-center mb-4">REGISTER</h2>
+   <form>
+       <div class="form-group">
+           <label for="username">username:</label>
+           <input type="text" class="form-control" id="username" name="username" required>
+       </div>
+       <div class="form-group">
+           <label for="email">E-mail:</label>
+           <input type="email" class="form-control" id="email" name="email" required>
+       </div>
+       <div class="form-group">
+           <label for="password">Password:</label>
+           <input type="password" class="form-control" id="password" name="password" required>
+       </div>
+       <div class="form-group">
+           <label for="confirm_password">Re.Password:</label>
+           <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+       </div>
+       <br>
+       <button type="submit" class="btn btn-primary btn-block">Register</button>
+   </form>
+</div>
+{% endblock %}

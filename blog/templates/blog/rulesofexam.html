@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %} Rules Of the Exam {% endblock%}
+
+{%block body_content%}
+
+{%include 'background.html'%}
+
+
+<div class="scrollable-div">
+<form method="POST" action="{% url 'rulesofexam' %}">
+  {% csrf_token %} 
+<div class="container">
+  <div class="row" >
+            <div class="container ">
+              <h2 class="text-center mb-4 mt-5 "> The Examination Rules</h2>
+              <ol class="list-group ">
+                  <li class="list-group-item active" aria-current="true">When Start To Examinaton;</li>
+                  <li class="list-group-item"><strong>Rule 1: </strong> You can not go back to previos question. (don't click yo back button on your browser.)</li>
+                  <li class="list-group-item"><strong>Rule 2: </strong> You can not refresh the page.If you refresh the system accept wrong answer and go to next question.</li>
+                  <li class="list-group-item"><strong>Rule 3: </strong> You can not go to next question without answer the current question.</li>
+                  <li class="list-group-item"><strong>Rule 4: </strong> Don't close to quesiton page until complete the test.</li>
+                  <li class="list-group-item"><strong>Rule 5: </strong> system will save you answer and time to answer questions.</li>
+                  <li class="list-group-item"><strong>Rule 6: </strong> if you give true answer less than average answer time you will get extra grade.</li>
+                  <li class="list-group-item"><strong>Rule 7: </strong> if you give true answer more than average answer time you will get negative extra grade.</li>
+                  <li class="list-group-item">
+                    <div class="form-check">
+                      <input class="form-check-input" autocomplate="off" type="checkbox" name="accept_rule_checkbox" value="True" id="flexCheckDefault">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        I accept all of the Rules
+                      </label>
+                    </div>
+                  </li>
+              </ol>
+            </div>
+          </div>   
+            <div class="row justify-content-center mt-3 ">
+            <button type="submit" name="submit_rule_button" class="btn btn-primary">Accept and Start The Exam</button>
+            </div>
+          </div>
+      </form>
+    </div>
+        {% if messages %}
+        <div class="alert alert-primary" role="alert">
+        <ul class="messages">
+                {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}> <strong>{{ message }}</strong> </li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+</div>
+{% endblock %}
